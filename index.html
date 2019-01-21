@@ -49,15 +49,30 @@
     <div v-if='curpage==="next"'  >
     <div>smzdm</div>
     <div>{{checkedNames}}</div>
-    <div>{{newchina}}</div>
+
+    <!--<div>{{newchina}}</div>-->
     <!--循环数组-->
     <ul >
         <li v-for="item in newchina">
             {{item}}
         </li>
     </ul>
-    <div>{{newjapan}}</div>
-    <div>{{newusa}}</div>
+
+
+        <!--<div>{{newjapan}}</div>-->
+    <ul >
+        <li v-for="item in newjapan">
+            {{item}}
+        </li>
+    </ul>
+
+
+<!--<div>{{newusa}}</div>-->
+    <ul >
+        <li v-for="item in newusa">
+            {{item}}
+        </li>
+    </ul>
 
     <img src="./66.jpg" alt="">
 
@@ -65,9 +80,10 @@
     <!--<button v-on:click="curpage = 'index'">Greet</button>-->
     <!--<button v-on:click="theName">Greet</button>-->
     <!--<button v-on:click="theProcess">Greet</button>-->
-        <!--遮罩-->
-    <div class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"></div>
+        <!--===========================遮罩=================================-->
+    <!--<div class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"></div>-->
 
+        <!--=======================页面3-图===============================-->
     </div>
     <!--<img  v-bind:src="dataURL" alt="">-->
         <div v-if='curpage==="output"'>
@@ -82,12 +98,13 @@
 
 
 <script>
+
     var example2 =new Vue({
         el: '#example-2',
         data: {
             checkedNames: [],
             // 把用户的输入转变为数据库的输出
-            newchina:[],
+            newchina:"",
             newjapan:"",
             newusa:"",
             curpage:'index',
@@ -97,6 +114,7 @@
         }   ,
 
         //=========================下面是方法=================================
+        //有两个部分调试的时候注释了，生产环境请放回去-----控制html2canvas绘制，还有html中的遮罩
         methods:{
             //页面1按钮的方法
             first:function(event){
@@ -108,7 +126,7 @@
                 if (this.checkedNames.indexOf("china") > -1) {
                     var arr =["中国历史大全","上下五千年","万历十五年","大清相国","丑陋的中国人","潜规则","历史是个什么玩意","毛泽东传","他改变了中国",]
                     var chinaresult = [];
-                    var ranNum = 3;
+                    var ranNum = 2;
                     for (var i = 0; i < ranNum; i++) {
                         var ran = Math.floor(Math.random() * arr.length);
                         chinaresult.push(arr.splice(ran, 1)[0]);
@@ -117,14 +135,34 @@
                 }
 
 
-
-
                 if (this.checkedNames.indexOf("japan") > -1) {
-                    this.newjapan = "明治维新，菊与刀"
+                    var arr =["日本历史大全","菊与刀","无印良品","断舍离","明治维新",]
+                    var japanresult = [];
+                    var ranNum = 2;
+                    for (var i = 0; i < ranNum; i++) {
+                        var ran = Math.floor(Math.random() * arr.length);
+                        japanresult.push(arr.splice(ran, 1)[0]);
+                    };
+                    this.newjapan = japanresult
                 }
+
                 if (this.checkedNames.indexOf("usa") > -1) {
-                    this.newusa = "美国历史，美国种族简史"
+                    var arr =["美国种族简史","美国历史","美国政治","华尔街","巴菲特传","美国的诞生","美国宪法",]
+                    var usaresult = [];
+                    var ranNum = 3;
+                    for (var i = 0; i < ranNum; i++) {
+                        var ran = Math.floor(Math.random() * arr.length);
+                        usaresult.push(arr.splice(ran, 1)[0]);
+                    };
+                    this.newusa = usaresult
                 }
+                //========================模仿下面=============================
+                // if (this.checkedNames.indexOf("japan") > -1) {
+                //     this.newjapan = "明治维新，菊与刀"
+                // }
+                // if (this.checkedNames.indexOf("usa") > -1) {
+                //     this.newusa = "美国历史，美国种族简史"
+                // }
 
 
                 //待使用的算法
@@ -143,7 +181,7 @@
                 // };
 
                 // =========================控制元素的显示隐藏=================================
-                //3秒后关闭遮罩
+                //2秒后彻底关闭遮罩
                 setTimeout(() => {  this.hiddenName= false }
 
                     , 2000)
@@ -154,31 +192,31 @@
 
                     , 1000)
 
-                //=========================控制html2canvas绘制=================================
-                setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
-                        width:1100 ,
-                        height:1500,
-                        // allowTaint:true,
-                        // useCORS:true,
-
-                    }).then((canvas) => {
-                        let dataURL = canvas.toDataURL("image/png");
-                        this.dataURL = dataURL;
-                    });
-                        this.curpage = 'output' }
-
-                    , 1500)
+                //=========================控制html2canvas绘制==以下要使用的，请调回去===============================
+                // setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
+                //         // width:1100 ,
+                //         // height:1500,
+                //         // allowTaint:true,
+                //         // useCORS:true,
+                //
+                //     }).then((canvas) => {
+                //         let dataURL = canvas.toDataURL("image/png");
+                //         this.dataURL = dataURL;
+                //     });
+                //         this.curpage = 'output' }
+                //
+                //     , 1500)
             },
 
             //=========================转换用户的输入，变为数据库中的内容=================================
-            theName : function (event) {
-                if (this.checkedNames.indexOf("china") > -1) {
-                    this.chuliguo = "中国历史大全，上下五千年，万历十五年"
-                }
-                console.log("hello")
-
-
-            },
+            // theName : function (event) {
+            //     if (this.checkedNames.indexOf("china") > -1) {
+            //         this.chuliguo = "中国历史大全，上下五千年，万历十五年"
+            //     }
+            //     console.log("hello")
+            //
+            //
+            // },
             theProcess:function () {
                 // html2canvas(document.getElementById("example-2"),{
                 //     width:500 ,
