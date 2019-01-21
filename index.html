@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
     <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <link rel="stylesheet" href="./css.css">
     <style>
 
         .mask{
@@ -18,7 +19,7 @@
             top:0;
             left:0;
             opacity:1;
-            Transition: opacity 1s  ease-in-out;
+            Transition: opacity 2s  ease-in-out;
         /* transition-delay: s; */
     </style>
 
@@ -30,25 +31,32 @@
 <div id="example-2" >
     <!--=========================页面1 checkbox=================================-->
     <div v-if='curpage==="index"'>
+        <h1 class="firstbiaoti">制定我的<br />2019<br />假期学习计划</h1>
 
     <!--checkbox-->
     <input type="checkbox" id="jack" value="china" v-model="checkedNames">
-    <label for="jack">china</label>
+    <label id="bchina" for="jack"><div class="labeltext">china</div></label>
     <input type="checkbox" id="john" value="japan" v-model="checkedNames">
-    <label for="john">japan</label>
+    <label id="bjapan" for="john"><div class="labeltext">japan</div></label>
     <input type="checkbox" id="mike" value="usa" v-model="checkedNames">
-    <label for="mike">usa</label>
+    <label id="busa" for="mike"><div class="labeltext">usa</div></label>
     <br>
     <!--在页面1下方显示的绑定的数组-->
-    <span>Checked names: {{ checkedNames }}</span>
+    <!--<span>Checked names: {{ checkedNames }}</span>-->
+
     <!--按钮 切换页面二-->
-    <button v-on:click="first">Greet</button>
+    <button class=btn v-on:click="first">Greet</button>
+        <!--图片-->
+    <img class=firstimg src="illustration-contrib%20664×489.png" alt="">
     </div>
 
     <!--=========================页面2=================================-->
-    <div v-if='curpage==="next"'  >
-    <div>smzdm</div>
-    <div>{{checkedNames}}</div>
+    <div class=seconddiv v-if='curpage==="next"'  >
+
+    <img class="secondimg" src="./66.jpg" alt="">
+
+    <!--<div>smzdm</div>-->
+    <!--<div>{{checkedNames}}</div>-->
 
     <!--<div>{{newchina}}</div>-->
     <!--循环数组-->
@@ -74,14 +82,14 @@
         </li>
     </ul>
 
-    <img src="./66.jpg" alt="">
+
 
 
     <!--<button v-on:click="curpage = 'index'">Greet</button>-->
     <!--<button v-on:click="theName">Greet</button>-->
     <!--<button v-on:click="theProcess">Greet</button>-->
-        <!--===========================遮罩=================================-->
-    <!--<div class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"></div>-->
+        <!--=======#######===========遮罩=================================-->
+    <div class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"></div>
 
         <!--=======================页面3-图===============================-->
     </div>
@@ -89,11 +97,14 @@
         <div v-if='curpage==="output"'>
 
         <img v-bind:src="dataURL" alt="">
+        <!--二维码-->
+            <img class=people src="./people.jpg" alt="">
 
 
-    </div>
+        </div>
 
 </div>
+
 
 
 
@@ -184,7 +195,7 @@
                 //2秒后彻底关闭遮罩
                 setTimeout(() => {  this.hiddenName= false }
 
-                    , 2000)
+                    , 5000)
 
                 // =========================控制透明度=================================
                 //2秒后把遮罩透明度变0，有1秒的转换时间
@@ -192,20 +203,20 @@
 
                     , 1000)
 
-                //=========================控制html2canvas绘制==以下要使用的，请调回去===============================
-                // setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
-                //         // width:1100 ,
-                //         // height:1500,
-                //         // allowTaint:true,
-                //         // useCORS:true,
-                //
-                //     }).then((canvas) => {
-                //         let dataURL = canvas.toDataURL("image/png");
-                //         this.dataURL = dataURL;
-                //     });
-                //         this.curpage = 'output' }
-                //
-                //     , 1500)
+                //===========###############控制html2canvas绘制==以下要使用的，请调回去===============================
+                setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
+                        // width:1100 ,
+                        // height:1500,
+                        // allowTaint:true,
+                        // useCORS:true,
+
+                    }).then((canvas) => {
+                        let dataURL = canvas.toDataURL("image/png");
+                        this.dataURL = dataURL;
+                    });
+                        this.curpage = 'output' }
+
+                    , 1500)
             },
 
             //=========================转换用户的输入，变为数据库中的内容=================================

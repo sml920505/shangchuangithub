@@ -1,0 +1,72 @@
+html,body{margin:0px;padding:0px;}
+
+body{
+    background-color: orangered;
+}
+
+
+
+.firstbiaoti{
+    color: #ffe184;
+    text-align: right;
+    font-size: 7vh;
+
+}
+.firstimg{
+position: absolute;
+bottom: 0vh;
+left: 20vw;
+height: 40vh;
+
+}
+input{
+    visibility: hidden;
+}
+.labeltext{
+    position: relative;
+    top:35%;
+    left: 20%;
+}
+label{
+    /*为了改变label不能改width的问题*/
+    display:inline-block;
+    width: 20vw;
+    height: 20vw;
+    /*position: relative;*/
+    /*top:-10vw;*/
+    /*padding: 10vw;*/
+    border: 2px solid #f7ffa0;
+    border-radius: 50%;
+    background-color: #ffe184;
+}
+input:checked+label{
+    background-color: red;
+}
+.btn{
+    position: absolute;
+    bottom: 40vh;
+    left: 10vw;
+
+    width: 40vw;
+    height: 5vh;
+    background-color: darkorange;
+    border: 0px;
+    box-shadow: 3px 3px 10px #ffbcb9;
+}
+
+.seconddiv {
+    width: 100vw;
+    height: 100vh;
+    background-color: orangered;
+    font-size: 10vw;
+}
+.secondimg{
+    width: 100vw;
+    margin: 0px;
+}
+.people {
+    position: absolute;
+    bottom: 20vh;
+    right: 5vw;
+    width: 30vw;
+}
