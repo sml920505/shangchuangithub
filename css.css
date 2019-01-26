@@ -60,7 +60,7 @@ input:checked+label{
 
 .seconddiv {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: orangered;
     font-size: 7vw;
 }
