@@ -3,7 +3,10 @@ html,body{margin:0px;padding:0px;}
 body{
     background-color: orangered;
 }
-
+#bm {
+    width: 100%;
+    height: 100%;
+  }
 
 
 .firstbiaoti{
@@ -42,7 +45,7 @@ label{
 input:checked+label{
     background-color: red;
 }
-.btn{
+.btn {
     position: absolute;
     bottom: 40vh;
     left: 10vw;
@@ -52,21 +55,40 @@ input:checked+label{
     background-color: darkorange;
     border: 0px;
     box-shadow: 3px 3px 10px #ffbcb9;
+
 }
 
 .seconddiv {
     width: 100vw;
     height: 100vh;
     background-color: orangered;
-    font-size: 10vw;
+    font-size: 7vw;
 }
 .secondimg{
     width: 100vw;
     margin: 0px;
+}
+.secondtitle{
+   text-align: center;
+   background-color: orange
 }
 .people {
     position: absolute;
     bottom: 20vh;
     right: 5vw;
     width: 30vw;
+}
+li{
+    list-style: none;
+    padding-left: 10px;
+    border-left:3px solid #f7ffa0;
+    margin-bottom: 10px;
+    
+}
+.bottominfosp{
+    border-left:0px solid #f7ffa0;
+    padding-left: 10vw;
+    border-left:5vw solid #ffffff;
+
+
 }

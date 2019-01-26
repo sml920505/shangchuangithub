@@ -14,13 +14,20 @@
             width:100%;
             height:100%;
             position:fixed;
-            background-color:#999;
+            background-color:#FFFFFF;
+            /* background-image: url(./unold_icon1_animation_loop_f.gif); */
             z-index:9999;
             top:0;
             left:0;
             opacity:1;
             Transition: opacity 2s  ease-in-out;
         /* transition-delay: s; */
+        }
+        .bimage{
+            width: 100vw;
+            position: absolute;
+            top:30%
+        }
     </style>
 
 
@@ -30,6 +37,8 @@
 
 <div id="example-2" >
     <!--=========================页面1 checkbox=================================-->
+
+ 
     <div v-if='curpage==="index"'>
         <h1 class="firstbiaoti">制定我的<br />2019<br />假期学习计划</h1>
 
@@ -60,27 +69,40 @@
 
     <!--<div>{{newchina}}</div>-->
     <!--循环数组-->
+    <h3 class="secondtitle">中国 阅读5本书</h3>
     <ul >
-        <li v-for="item in newchina">
+        <li  v-for="item in newchina">
             {{item}}
         </li>
     </ul>
 
+    <h3 class="secondtitle">日本</h3>
 
         <!--<div>{{newjapan}}</div>-->
     <ul >
-        <li v-for="item in newjapan">
+        <li  v-for="item in newjapan">
             {{item}}
         </li>
     </ul>
 
+    <h3 class="secondtitle">美国</h3>
 
 <!--<div>{{newusa}}</div>-->
     <ul >
-        <li v-for="item in newusa">
+        <li   v-for="item in newusa">
             {{item}}
         </li>
     </ul>
+
+    <div class="bottominfo">
+            <h3 style="text-align: center;background-color: orange">自查清单</h3>
+            <ul>
+            <li class="bottominfosp">读完15本书</li>
+            <li class="bottominfosp">学完7门课</li>
+            <li class="bottominfosp">学习市场5186分钟</li>
+        </ul>
+    </div>
+    <img src="./Screenshot - 2019-01-26 09.27.48.png" alt="">
 
 
 
@@ -89,9 +111,12 @@
     <!--<button v-on:click="theName">Greet</button>-->
     <!--<button v-on:click="theProcess">Greet</button>-->
         <!--=======#######===========遮罩=================================-->
-    <div class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"></div>
+    <!-- <div  id="bm' class='mask' v-show="hiddenName"  v-bind:style = "{opacity:opc}"> </div>  -->
+    <div   class="mask" v-show="hiddenName" v-bind:style ="{opacity:opc}" >
+        <img class="bimage" src="./unold_icon1_animation_loop_f.gif" v-show="hiddenName" v-bind:style ="{opacity:opc}">
+    </div>
 
-        <!--=======================页面3-图===============================-->
+    <!--=======================页面3-图===============================-->
     </div>
     <!--<img  v-bind:src="dataURL" alt="">-->
         <div v-if='curpage==="output"'>
@@ -105,10 +130,14 @@
 
 </div>
 
+<!-- 增加动效 -->
+<!-- <script src="https://labs.nearpod.com/bodymovin/demo/markus/halloween/lottie.min.js"></script> -->
 
+<!-- <script src="./play.js"></script> -->
 
 
 <script>
+
 
     var example2 =new Vue({
         el: '#example-2',
@@ -122,6 +151,7 @@
             dataURL:'',
             hiddenName: true,
             opc:" "
+            
         }   ,
 
         //=========================下面是方法=================================
@@ -132,12 +162,14 @@
                 // =========================改变页面路由=================================
                 this.curpage="next"
 
+
+
                 //=========================转换用户的输入，变为数据库中的内容 随机返回3个=================================
 
                 if (this.checkedNames.indexOf("china") > -1) {
                     var arr =["中国历史大全","上下五千年","万历十五年","大清相国","丑陋的中国人","潜规则","历史是个什么玩意","毛泽东传","他改变了中国",]
                     var chinaresult = [];
-                    var ranNum = 2;
+                    var ranNum = 5;
                     for (var i = 0; i < ranNum; i++) {
                         var ran = Math.floor(Math.random() * arr.length);
                         chinaresult.push(arr.splice(ran, 1)[0]);
@@ -147,9 +179,9 @@
 
 
                 if (this.checkedNames.indexOf("japan") > -1) {
-                    var arr =["日本历史大全","菊与刀","无印良品","断舍离","明治维新",]
+                    var arr =["日本历史大全","菊与刀","无印良品","断舍离","明治维新","菊与刀","无印良品","断舍离","明治维新","菊与刀","无印良品","断舍离","明治维新",]
                     var japanresult = [];
-                    var ranNum = 2;
+                    var ranNum = 8;
                     for (var i = 0; i < ranNum; i++) {
                         var ran = Math.floor(Math.random() * arr.length);
                         japanresult.push(arr.splice(ran, 1)[0]);
@@ -158,9 +190,9 @@
                 }
 
                 if (this.checkedNames.indexOf("usa") > -1) {
-                    var arr =["美国种族简史","美国历史","美国政治","华尔街","巴菲特传","美国的诞生","美国宪法",]
+                    var arr =["美国种族简史","美国历史","美国政治","华尔街","巴菲特传","美国的诞生","美国宪法","华尔街","巴菲特传","美国的诞生","美国宪法",]
                     var usaresult = [];
-                    var ranNum = 3;
+                    var ranNum = 8;
                     for (var i = 0; i < ranNum; i++) {
                         var ran = Math.floor(Math.random() * arr.length);
                         usaresult.push(arr.splice(ran, 1)[0]);
@@ -201,12 +233,12 @@
                 //2秒后把遮罩透明度变0，有1秒的转换时间
                 setTimeout(() => {  this.opc= "0 "}
 
-                    , 1000)
+                    , 3000)
 
                 //===========###############控制html2canvas绘制==以下要使用的，请调回去===============================
                 setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
-                        // width:1100 ,
-                        // height:1500,
+                        width:$(window).width(),
+                        height:$(window).height(),
                         // allowTaint:true,
                         // useCORS:true,
 
@@ -216,7 +248,7 @@
                     });
                         this.curpage = 'output' }
 
-                    , 1500)
+                    , 3500)
             },
 
             //=========================转换用户的输入，变为数据库中的内容=================================
