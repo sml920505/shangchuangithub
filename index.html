@@ -237,10 +237,10 @@
 
                 //===========###############控制html2canvas绘制==以下要使用的，请调回去===============================
                 setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
-                        // width:$(window).width(),
-                        height:1650,
-                        x:0,
-                        y:0
+                        // width:document.body.clientWidth,
+                        height:document.body.scrollHeight,
+                        // x:0,
+                        // y:0
                         // allowTaint:true,
                         // useCORS:true,
                         // width:100 ,

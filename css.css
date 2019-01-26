@@ -74,7 +74,7 @@ input:checked+label{
 }
 .people {
     position: relative;
-    bottom: 0px;
+    bottom: 40vw;
     left: 0px;
     width: 40vw
 }
