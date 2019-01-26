@@ -123,7 +123,7 @@
 
         <img v-bind:src="dataURL" alt="">
         <!--二维码-->
-            <img class=people src="./people.jpg" alt="">
+        <img class=people src="./people.jpg" alt="">
 
 
         </div>
@@ -237,10 +237,14 @@
 
                 //===========###############控制html2canvas绘制==以下要使用的，请调回去===============================
                 setTimeout(() => {  html2canvas(document.getElementById("example-2"),{
-                        width:$(window).width(),
-                        height:$(window).height(),
+                        // width:$(window).width(),
+                        height:1650,
+                        x:0,
+                        y:0
                         // allowTaint:true,
                         // useCORS:true,
+                        // width:100 ,
+                        // height:640,
 
                     }).then((canvas) => {
                         let dataURL = canvas.toDataURL("image/png");

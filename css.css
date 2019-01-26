@@ -73,10 +73,10 @@ input:checked+label{
    background-color: orange
 }
 .people {
-    position: absolute;
-    bottom: 20vh;
-    right: 5vw;
-    width: 30vw;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    width: 40vw
 }
 li{
     list-style: none;
